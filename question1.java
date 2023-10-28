@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 abstract class Employee {
     protected int id;
     protected String name;
@@ -64,5 +66,37 @@ class TemporaryEmp extends Employee{
         double netsalary = minWage +otAmount;
         System.out.println("Net Salary: " + netsalary);
     }
+
+    public void display() {
+        super.display();
+        System.out.println("OtHrs: " + OtHrs + " OtRate: " + OtRate + " MinWage: " + minWage);
+    }
+}
+
+class DemoApp{
+    public static void main(String[] args) {
+        ArrayList<PermanentEmp>permanentEmps=new ArrayList<>();
+        permanentEmps.add(new PermanentEmp(1,"Kamal",10000,5000));
+        permanentEmps.add(new PermanentEmp(2," minuka", 20000, 7000));
+
+        System.out.println("Permanent Employees: ");
+        for (PermanentEmp permanentEmp : permanentEmps) {
+            permanentEmp.display();
+            permanentEmp.calculatenetsalary();
+        }
+
+
+    ArrayList<TemporaryEmp>temporaryEmps=new ArrayList<>();
+    temporaryEmps.add(new TemporaryEmp(4,"gavith",10000,5000,10,100,10000));
+    temporaryEmps.add(new TemporaryEmp(5," kaweesha", 20000, 7000,10,100,10000));
+
+        System.out.println("Temporary Employees: ");
+        for (TemporaryEmp temporaryEmp : temporaryEmps) {
+            temporaryEmp.display();
+            temporaryEmp.calculatenetsalary();
+        }
+
+    }
+
 }
 
